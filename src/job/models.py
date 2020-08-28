@@ -16,11 +16,14 @@ JOB_TYPE = (
     ('Part Time','Part Time'),
 )
 
-def image_upload(instance,filename):
-    imagename , extension = filename.split(".")
-    return "jobs/%s.%s"%(instance.id,extension)
-
 
 
 class Job(models.Model):  # table 
     title = models.CharField(max_length=100)  # column
+    #location
+    job_type = models.CharField(max_length=15 , choices=JOB_TYPE)
+    describtion = models.TextField(max_length=1000)
+    published_at = models.DateTimeField(auto_now=True)
+    Vacancy = models.IntegerField(default=1)
+    salary = models.IntegerField(default=0)
+    experience = models.IntegerField(default=1) 
